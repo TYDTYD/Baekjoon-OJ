@@ -1,3 +1,7 @@
+import sys
+sys.setrecursionlimit(100000)
+input=sys.stdin.readline
+
 # 노드 구현
 class Node(object):
     def __init__(self,data):
@@ -24,7 +28,7 @@ class BinarySearchTree(object):
                 node.right = self._insert_value(node.right, data)
         return node
         
-# 중위 순회
+# 후위 순회
     def PostOrder(self, root):
         if root is None:
             pass
@@ -33,9 +37,9 @@ class BinarySearchTree(object):
             self.PostOrder(root.right)
             print(root.data)
 
-array=[50,30,24,5,28,45,98,52,60]
+array=[]
 
-while(False):
+while(True):
     try:
         array.append(int(input()))
     except:
