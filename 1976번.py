@@ -36,7 +36,6 @@ for i in range(n):
     for j in range(n):
         if index[j]==1:
             unionParent(parent,i,j)
-            print(i,j)
 
 plan=list(map(int,input().split()))
 for i in range(m-1):
