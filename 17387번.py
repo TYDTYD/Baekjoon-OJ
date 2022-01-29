@@ -1,5 +1,6 @@
 import sys
 sys.stdin.readline
+E=10**-9
 
 x1,y1,x2,y2=map(int,input().split())
 x3,y3,x4,y4=map(int,input().split())
@@ -42,7 +43,6 @@ elif y1==y2: # 한 선분만 y축과 평행할 때
     dx=(dy-y3)/m2+x3
     if dx<=x3 and dx>=x4 or dx>=x3 and dx<=x4:
         print(1)
-        print(dx)
     else:
         print(0)
 elif y3==y4:
@@ -67,8 +67,8 @@ else:
     else: # 기울기가 같지 않을 때
         dx=((m1*x1)-(m2*x3)+y3-y1)/(m1-m2)
         dy=m1*(dx-x1)+y1
-        if dx>=x1 and dx<=x2 and dy>=y1 and dy<=y2 or dx>=x1 and dx<=x2 and dy<=y1 and dy>=y2 or dx>=x1 and dx<=x2 and dy<=y1 and dy>=y2 or dx<=x1 and dx>=x2 and dy<=y1 and dy>=y2:
-            if dx>=x3 and dx<=x4 and dy>=y3 and dy<=y4 or dx>=x3 and dx<=x4 and dy<=y3 and dy>=y4 or dx>=x3 and dx<=x4 and dy<=y3 and dy>=y4 or dx<=x3 and dx>=x4 and dy<=y3 and dy>=y4:
+        if (dx+E>=min(x1,x2) or dx-E>=min(x1,x2)) and (dx+E<=max(x1,x2) or dx-E<=max(x1,x2)) and (dy+E>=min(y1,y2) or dy-E>=min(y1,y2)) and (dy+E<=max(y1,y2) or dy-E<=max(y1,y2)):
+            if (dx+E>=min(x3,x4) or dx-E>=min(x3,x4)) and (dx+E<=max(x3,x4) or dx-E<=max(x3,x4)) and (dy+E>=min(y3,y4) or dy-E>=min(y3,y4)) and (dy+E>=min(y3,y4) or dy-E>=min(y3,y4)):
                 print(1)
             else:
                 print(0)
