@@ -18,13 +18,13 @@ def solution(a,b):
 def ccw(x1,y1,x2,y2,x3,y3):
     return (x2-x1)*(y3-y1)-(y2-y1)*(x3-x1)
 
-def getParent(parent,x): # 부모 노드를 찾는 함수
+def getParent(parent,x):
     if parent[x]==x:
         return x
     else:
         return getParent(parent,parent[x])
 
-def unionParent(parent,a,b): # 두 부모를 합치는 함수
+def unionParent(parent,a,b):
     a=getParent(parent,a)
     b=getParent(parent,b)
     if a<b:
