@@ -20,7 +20,7 @@ answer=0
 
 for i in range(1,n+1):
     parent.append(i)
-print(parent)
+
 for i in range(m):
     a,b=map(int,input().split())
     if find_parent(parent,a)==find_parent(parent,b) and answer==0:
@@ -29,4 +29,3 @@ for i in range(m):
         union_parent(parent,a,b)
 
 print(answer)
-print(parent)
