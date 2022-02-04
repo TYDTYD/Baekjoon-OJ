@@ -2,24 +2,21 @@ import sys
 input=sys.stdin.readline
 
 a,b=map(int,input().split())
-start=[1]
 
-for i in range(1,53):
-    if b<2**(i+1):
-        diff=2**(i+1)-b+1
-        break
-    start.append(start[i-1]+start[i-1]+2**(i-1))
+first=[0,1,1,2]
+dp=[0,0,0,0]
+count=2
+idx=0
+asum=0
 
-print(diff,start)
+for i in range(b+1):
+    dp[i%4]+=first[i]
+    first.append(first[idx%2**count]+1)
+    idx+=1
+    if idx%2**count==0:
+        idx=0
+        count+=1
+    if a==i+1:
+        asum=sum(dp)
 
-result=sum(start)
-index=0
-
-while(diff>0):
-    if diff>=(len(start)-index):
-        result=result+2**(len(start)-index)
-        diff=diff-(len(start)-index)
-    else:
-        index+=1
-    
-print(result)
+print(sum(dp)-asum)
