@@ -40,3 +40,4 @@ else:
                                     DP[i][h]=min(DP[i][h],RGB[i][h]+DP[i-1][j][0])
                     
 print(min(DP[-1]))
+print(DP)
