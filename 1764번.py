@@ -1,14 +1,11 @@
 import sys
-input=sys.stdin.readline
 
-n,m=map(int,input().split())
-index1=[]
-index2=[]
+n, m = map(int, sys.stdin.readline().split())
+not_heard = [sys.stdin.readline().strip() for _ in range(n)]
+never_seen = [sys.stdin.readline().strip() for _ in range(m)]
 
-for i in range(n):
-    index1.append(input())
-    
-for i in range(m):
-    index2.append(input())
+result = sorted(list(not_heard & never_seen))
 
-print(set(index1+index2))
+print(len(result))
+for i in result:
+    print(i)
