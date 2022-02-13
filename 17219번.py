@@ -10,5 +10,7 @@ for i in range(n):
     dict.update({address:password})
 
 for i in range(m):
-    index=input().split()
-    print(dict.get(index[0]))
+    index.append(input())
+
+for i in index:
+    print(dict.get(i[:-1]))
