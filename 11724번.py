@@ -26,6 +26,5 @@ for i in range(1,n):
 
 if visited.count(False)>=1:
     print(count+visited.count(False))
-    print(visited)
 else:
     print(count)
