@@ -15,4 +15,8 @@ for i in range(n):
     for j in tile:
         dp[i+j]=dp[i+j]+dp[i]
 
+<<<<<<< HEAD
 print(dp)
+=======
+print(dp[n])
+>>>>>>> 82e4a7a29d8522e6baf766167445420e72546b25
