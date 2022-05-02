@@ -7,6 +7,7 @@ v,e=map(int,input().split())
 graph=[[] for _ in range(v)]
 d=[INF]*v
 Q=[]
+visited=[False]*v
 
 for i in range(v):
     Q.append(i)
@@ -18,17 +19,18 @@ for i in range(e):
 
 def Prim(graph,start):
     d[start]=0
-    while(Q!=[]):
-        h=[]
-        for i in Q:
-            heapq.heappush(h,(d[i],i))
-        minimum=heapq.heappop(h)
-        Q.remove(minimum[1])
-        u=minimum[1]
+    h=[]
+    heapq.heappush(h,(0,start))
+    while Q:
+        w,u=heapq.heappop(h)
+        if visited[u]:
+            continue
+        Q.remove(u)
+        visited[u]=True
         for i in graph[u]:
-            if i[0] in Q and i[1]<d[i[0]]:
+            if not visited[i[0]] and i[1]<d[i[0]]:
                 d[i[0]]=i[1]
-    return d
+                heapq.heappush(h,(i[1],i[0]))
+    return sum(d)
 
-result=Prim(graph,0)
-print(sum(result))
+print(Prim(graph,0))
