@@ -3,11 +3,8 @@ import sys
 input=sys.stdin.readline
 
 T=int(input())
-answer=[]
 
-while(T>0):
-    init=[]
-    T-=1
+for i in range(T):
     v,e=map(int, input().split())
     time=list(map(int,input().split()))
 
@@ -15,26 +12,21 @@ while(T>0):
     indegree=[0]*(v+1)
     graph=[[] for i in range(v+1)]
 
-    for i in range(e):
+    for j in range(e):
         a,b=map(int,input().split())
         graph[a].append(b)
         indegree[b]+=1
 
     want=int(input())
-
     q=deque()
-    for i in range(1,v+1):
-        if indegree[i]==0:
-            q.append(i)
+    for j in range(1,v+1):
+        if indegree[j]==0:
+            q.append(j)
     while(indegree[want]>0):
-        index=q[0]
-        q.popleft()
-        for i in graph[index]:
-            indegree[i]-=1
-            result[i]=max(result[i],result[index]+time[index-1])
-            if indegree[i]==0:
-                q.append(i)
-    answer.append(result[want]+time[want-1])
-
-for i in range(len(answer)):
-    print(answer[i])
+        index=q.popleft()
+        for k in graph[index]:
+            indegree[k]-=1
+            result[k]=max(result[k],result[index]+time[index-1])
+            if indegree[k]==0:
+                q.append(k)
+    print(result[want]+time[want-1])
