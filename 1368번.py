@@ -35,9 +35,9 @@ def Prim(graph,start):
         for i in graph[u]: # 인접 정점 순환하기
             if not visited[i[0]]:
                 if cost[i[0]]<d[i[0]] or i[1]<d[i[0]]:
-                    minimum=min(cost[i[0]],i[1])
+                    minimum=min(cost[i[0]],i[1]) # 우물 비용과 물 끌어오는 비용 중 더 작은 것을 대입
                     d[i[0]]=minimum
                     heapq.heappush(h,(minimum,i[0]))
-    return sum(d) # 최소신장트리의 모든 가중치 반환
+    return d # 최소신장트리의 모든 가중치 반환
 
 print(Prim(graph,cost.index(min(cost))))
