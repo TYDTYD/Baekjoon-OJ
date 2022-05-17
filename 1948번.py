@@ -44,5 +44,5 @@ def dfsR(graph,v,visited,res,count): # dfs로 경로 역추적
             res+=i[1] # 다시 시간 +
     return count
 
-print(result)
+print(result[end])
 print(dfsR(graphR,end,visited,result[end],0))
