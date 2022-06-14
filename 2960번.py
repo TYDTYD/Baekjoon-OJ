@@ -16,7 +16,7 @@ for i in range(2,n+1):
         while i*j<=n:
             if not array[i*j]:
                 array[i*j]=True
-                count+=1
+                count+=1 # 지우는 횟수 1 증가
             if count==k:
                 print(i*j)
                 exit()
