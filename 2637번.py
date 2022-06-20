@@ -33,4 +33,3 @@ while q:
 for i in range(1,n+1):
     if parts[i][n]!=0:
         print(i,parts[i][n])
-print(parts)
