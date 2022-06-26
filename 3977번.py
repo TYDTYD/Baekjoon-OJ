@@ -19,44 +19,59 @@ def dfsR(v,visited,stack):
 
 T=int(input())
 
-for _ in range(T):
-    v,e=map(int,input().split())
-    graph=[[] for _ in range(v+1)]
-    graphR=[[] for _ in range(v+1)]
-    visited=[False]*(v+1)
+while(T):
+    line=input()
+    if line=='\n':
+        continue
+    n,m=map(int,line.split())
+    graph=[[] for _ in range(n)]
+    graphR=[[] for _ in range(n)]
+    visited=[False]*n
     stack=[]
-    idx=0
-    index=[-1]*(v+1)
 
-    for i in range(e):
+    for i in range(m):
         a,b=map(int,input().split())
         graph[a].append(b)
         graphR[b].append(a)
 
-    for i in range(1,v+1):
+    for i in range(n):
         if not visited[i]:
             dfs(i,visited,stack)
-
-    visited=[False]*(v+1)
-    count=0
+        
+    visited=[False]*n
     answer=[]
+    idx=0
+    index=[-1]*n
 
     while stack:
         scc=[]
         point=stack.pop()
         if not visited[point]:
-            idx+=1
             dfsR(point,visited,scc)
+            idx+=1
             answer.append(sorted(scc))
-    scc_indegree=[0]*(idx+1)
 
-    for i in range(1,v+1):
+    scc_indegree=[0]*idx
+
+    for i in range(n):
         for j in graph[i]:
             if index[i]!=index[j]:
                 scc_indegree[index[j]]+=1
-    
-    for i in range(1,len(scc_indegree)):
-        if scc_indegree[i]==0:
-            count+=1
 
-    print(count)
+    count=0
+    scc_index=0
+    
+    for i in range(len(scc_indegree)):
+        if scc_indegree[i]==0:
+            scc_index=i
+            count+=1
+        if count>=2:
+            break
+    
+    if count==1:
+        for i in answer[scc_index]:
+            print(i)
+    else:
+        print("Confused")
+    print()
+    T-=1
