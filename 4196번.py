@@ -53,10 +53,10 @@ for _ in range(T):
     for i in range(1,v+1):
         for j in graph[i]:
             if index[i]!=index[j]:
-                scc_indegree[index[j]]+=1
+                scc_indegree[index[j]]+=1 # scc 상의 진입간선 카운트
     
-    for i in range(1,len(scc_indegree)):
-        if scc_indegree[i]==0:
+    for i in range(1,len(scc_indegree)): 
+        if scc_indegree[i]==0: # 진입간선이 없는 scc라면 카운트
             count+=1
 
-    print(count)
+    print(count) # 진입간선이 없는 scc의 개수 출력

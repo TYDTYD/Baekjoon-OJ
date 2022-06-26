@@ -20,8 +20,8 @@ def dfsR(v,visited,stack):
 T=int(input())
 
 while(T):
-    line=input()
-    if line=='\n':
+    line=input() # 정말로 이해가 안가는 출력 형식
+    if line=='\n': # 정말 이해 안되는 문제 출력 형식
         continue
     n,m=map(int,line.split())
     graph=[[] for _ in range(n)]
@@ -62,16 +62,16 @@ while(T):
     scc_index=0
     
     for i in range(len(scc_indegree)):
-        if scc_indegree[i]==0:
-            scc_index=i
-            count+=1
+        if scc_indegree[i]==0: # scc 그래프 상에 진입간선이 없다면 카운트
+            scc_index=i 
+            count+=1 
         if count>=2:
             break
     
-    if count==1:
-        for i in answer[scc_index]:
+    if count==1: # 진입간선이 0인 scc가 하나만 있다면
+        for i in answer[scc_index]: # scc의 원소 출력
             print(i)
     else:
-        print("Confused")
+        print("Confused") # 아니라면 Confused 출력
     print()
     T-=1
